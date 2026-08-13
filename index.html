@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="A coordinate-consistent surface-to-skeleton task: estimating hidden CT-defined skeletal landmarks from CT-derived external soft-tissue surfaces. 2.97 mm MRE on 21 skeletal landmarks. AI4M3D Workshop at ECCV 2026.">
+  <meta name="keywords" content="3D cephalometry, surface-to-skeleton, hidden landmark estimation, point cloud, medical 3D vision, orthodontics, AI4M3D, ECCV">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Surface-to-Skeleton 3D Cephalometry</title>
+  <!-- TODO(deploy): replace USERNAME/REPO with the actual GitHub Pages URL before publishing. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Surface-to-Skeleton 3D Cephalometry: Estimating Hidden Skeletal Landmarks from CT-Derived External Soft-Tissue Surfaces">
+  <meta property="og:description" content="Can internal skeletal landmarks be inferred from the external 3D head surface? A controlled feasibility study with an integrated hierarchical point-cloud model. AI4M3D Workshop at ECCV 2026.">
+  <meta property="og:url" content="https://USERNAME.github.io/cephalo3d-project-page/">
+  <meta property="og:image" content="https://USERNAME.github.io/cephalo3d-project-page/static/images/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Surface-to-Skeleton 3D Cephalometry">
+  <meta name="twitter:description" content="Estimating hidden CT-defined skeletal landmarks from CT-derived external soft-tissue surfaces. AI4M3D Workshop at ECCV 2026.">
+  <meta name="twitter:image" content="https://USERNAME.github.io/cephalo3d-project-page/static/images/og-card.png">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro&display=swap"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Surface-to-Skeleton 3D Cephalometry: Estimating Hidden Skeletal Landmarks from CT-Derived External Soft-Tissue Surfaces</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="https://www.linkedin.com/in/tomoki-abe-b483b4429/">Tomoki Abe</a><span class="author-affil">1</span>,</span>
+            <span class="author-block"><a href="https://tora223.github.io/">Taiki Kanaya</a><span class="author-affil">1</span>,</span>
+            <span class="author-block"><a href="https://cassius-prechs.github.io/">Kazuki Saita</a><span class="author-affil">1</span>,</span>
+            <span class="author-block"><a href="https://orcid.org/0009-0004-6830-6302">Mao Noda</a><span class="author-affil">2</span>,</span>
+            <span class="author-block"><a href="https://orcid.org/0000-0003-0614-9159">Chie Tachiki</a><span class="author-affil">2</span>,</span>
+            <span class="author-block"><a href="https://orcid.org/0000-0001-7695-1564">Yasushi Nishii</a><span class="author-affil">2</span>,</span>
+            <span class="author-block"><a href="http://www.hvrl.ics.keio.ac.jp/professor-saito/">Hideo Saito</a><span class="author-affil">1</span></span>
+          </div>
+
+          <div class="is-size-6 publication-affiliations">
+            <span class="author-block"><span class="author-affil">1</span>Keio University,</span>
+            <span class="author-block"><span class="author-affil">2</span>Tokyo Dental College</span>
+          </div>
+
+          <div class="is-size-5 publication-venue">
+            <a href="https://ai4m3d.github.io/">AI4M3D Workshop @ ECCV 2026</a> &middot; Malm&ouml;, Sweden
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- TODO(paper): replace with the camera-ready PDF or arXiv PDF link once available. -->
+              <span class="link-block">
+                <span class="button is-normal is-rounded is-dark is-static">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper Coming Soon</span>
+                </span>
+              </span>
+              <!-- TODO(arxiv): replace with the arXiv abs link once the preprint is posted. -->
+              <span class="link-block">
+                <span class="button is-normal is-rounded is-dark is-static">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv Coming Soon</span>
+                </span>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/tomoki-pc/surface-to-skeleton-3d-cephalometry"
+                   class="external-link button is-normal is-rounded is-dark"
+                   aria-label="Code on GitHub">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#BibTeX" class="button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-quote-right"></i>
+                  </span>
+                  <span>BibTeX</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video class="teaser-image" autoplay muted loop playsinline
+             poster="./static/videos/teaser-poster.png"
+             width="1600" height="1000"
+             aria-label="Rotating external head surface from one representative study case turning translucent to reveal the corresponding craniofacial skeleton and 24-landmark configuration.">
+        <source src="./static/videos/teaser.mp4" type="video/mp4">
+      </video>
+      <p class="figure-caption">
+        The task at a glance: the external soft-tissue surface &mdash; the <b>only model input</b> &mdash; conceals the craniofacial skeleton and 21 skeletal target landmarks; three visible soft-tissue landmarks complete the 24-landmark configuration (colors follow the observability groups G0&ndash;G3). The bony surface is shown for orientation only; it is never a model input.
+        <br><i>Visualization shows one representative case from the study cohort; no patient identifier is displayed.</i>
+      </p>
+
+      <div class="tldr-box">
+        <div class="tldr-label">TL;DR</div>
+        <p>
+          Can internal skeletal landmarks such as <i>Sella</i> and <i>Basion</i> be inferred from the external 3D head surface alone?
+          Using 240 clinical CT scans, we formulate a <b>coordinate-consistent surface-to-skeleton task</b> that isolates this question from registration, scanner-domain, and acquisition-state effects.
+          An integrated hierarchical point-cloud model reaches <b>2.97&nbsp;mm mean radial error on 21 skeletal landmarks</b> &mdash; including <b>3.03&nbsp;mm on deep, surface-invisible landmarks</b> &mdash; and mismatch controls show the predictions are patient-specific rather than a population template.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Existing 3D facial-landmark methods localize points on visible skin, but whether CT-defined internal skeletal landmarks can be inferred from external soft-tissue geometry remains unclear. We formulate a coordinate-consistent surface-to-skeleton task using same-acquisition CT-derived surfaces, separating estimation from optical-to-CT registration, scanner-domain, and acquisition-state effects, with coverage analyzed separately. From 240 clinical CT scans from two hospitals, we construct a locked retrospective protocol pairing CT-derived external soft-tissue point clouds with 21 skeletal landmarks and three visible soft-tissue landmarks. An integrated hierarchical point-cloud model achieves 2.97&nbsp;mm mean radial error on skeletal landmarks and 3.03&nbsp;mm on deep or surface-invisible landmarks in 40 held-out patients. Patient-mismatch controls support patient-specific signal beyond a fixed population configuration or global similarity alone, while coverage ablations indicate dependence on non-anterior geometry. Optical-transfer diagnostics reveal substantial coverage-related and global-configuration components, although deployable optical inference remains unresolved. These results answer the controlled feasibility question affirmatively and provide a basis for hidden skeletal landmark inference.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">A Controlled Surface-to-Skeleton Task</h2>
+        <div class="content has-text-justified">
+          <p>
+            Cephalometric landmarks quantify the spatial relations among the cranial base, maxilla, and mandible, and are normally identified on CT/CBCT &mdash; at the cost of ionizing radiation. External head surfaces, in contrast, can be captured radiation-free by optical 3D scanners. A direct optical-to-CT study, however, entangles many error sources: surface-to-skeleton ambiguity, cross-modality registration, scanner-domain shift, coverage, expression, and the time gap between acquisitions.
+          </p>
+          <p>
+            We therefore isolate the core scientific question first: <b>does the external 3D head surface itself contain predictive signal for CT-defined skeletal landmarks?</b> Both the input surface and the target landmarks are derived from the <i>same</i> CT acquisition, so no cross-modality registration is involved. The 24 target landmarks are grouped by surface observability, from directly visible soft-tissue points (G0) to deep, surface-invisible skeletal points such as Sella, Basion, and Foramen Ovale (G3).
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="figure-block">
+      <img class="rounded-figure" src="./static/images/landmark_anatomy_overview.png"
+           alt="Anatomical context for the 24 target landmarks, grouped by surface observability from G0 surface points to G3 deep invisible points."
+           width="2600" height="1010" loading="lazy" decoding="async">
+      <p class="figure-caption">
+        Target landmarks grouped by observability: G0 surface (3), G1 frontal skeletal (8), G2 lateral skeletal (4), and G3 deep / surface-invisible (9). The bony surface is shown for orientation only &mdash; it is never a model input.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Integrated Hierarchical Model</h2>
+        <div class="content has-text-justified">
+          <p>
+            The model takes 8,192 surface points with normals and predicts all 24 landmarks in the registered CT frame through four stages: coarse global localization, two levels of local ROI refinement, and a conservative, gated statistical-shape calibration. Ablations show the ROI refinement drives most of the gain, while the final gate acts as modest calibration of the global landmark configuration.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="figure-block">
+      <img class="rounded-figure" src="./static/images/pipeline.png"
+           alt="Overview: a CT-derived external soft-tissue point cloud is processed by a four-stage hierarchical model to predict 21 skeletal and 3 soft-tissue landmarks, evaluated with cephalometric measurements."
+           width="2400" height="1320" loading="lazy" decoding="async">
+      <p class="figure-caption">
+        The external soft-tissue point cloud is the only model input; CT-defined skeletal landmarks are labels, and the bony surface is never seen by the model.
+      </p>
+    </div>
+
+    <div class="stage-grid">
+      <div class="stage-card">
+        <div class="stage-name">Stage 1 &mdash; Global Voting</div>
+        <p>A fine-tuned Sonata (Point Transformer V3) encoder lets every surface point vote for each landmark with a predicted offset and confidence; the softmax-weighted centroid gives a coarse estimate.</p>
+      </div>
+      <div class="stage-card">
+        <div class="stage-name">Stage 2 &mdash; 50-mm ROI Refinement</div>
+        <p>A PointNeXt encoder refines each landmark within a 50-mm sphere around the coarse estimate, using relative coordinates, normals, and a landmark-identity code to predict a damped residual.</p>
+      </div>
+      <div class="stage-card">
+        <div class="stage-name">Stage 2b &mdash; 80-mm Extended ROI</div>
+        <p>Fourteen high-error landmarks &mdash; mostly lateral and deep ones &mdash; receive a second refinement with a wider 80-mm context, capturing craniofacial structure beyond the local surface patch.</p>
+      </div>
+      <div class="stage-card">
+        <div class="stage-name">Stage 3 &mdash; ShapeGate Calibration</div>
+        <p>A PCA shape model of the 24-landmark configuration proposes a correction, and a learned per-landmark gate in [0,&thinsp;1] decides how much of it to apply &mdash; conservative calibration anchored to the Stage-2b prediction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            On the 40-patient locked test set, the full pipeline reaches <b>2.91&nbsp;mm</b> mean radial error over all 24 landmarks (95%&nbsp;CI 2.73&ndash;3.11&nbsp;mm), with gross failures above 10&nbsp;mm in only 0.7% of instances. It outperforms generic point-cloud encoders, a strong coarse-to-local comparator, and a global-descriptor PCA-ridge statistical-shape baseline under the same locked split &mdash; the low-dimensional shape model alone (6.91&nbsp;mm) is clearly insufficient for the surface-to-skeleton mapping.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>MRE (mm) &darr;</th>
+            <th>SDR@3 (%) &uarr;</th>
+            <th>SDR@5 (%) &uarr;</th>
+            <th>P95 (mm) &darr;</th>
+            <th>Fail@10 (%) &darr;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Training-mean landmarks</td><td>8.69</td><td>8.6</td><td>22.8</td><td>17.79</td><td>31.5</td></tr>
+          <tr><td>Global-desc. PCA-ridge</td><td>6.91</td><td>11.7</td><td>35.2</td><td>13.65</td><td>18.4</td></tr>
+          <tr><td>PointNet++</td><td>3.90</td><td>40.1</td><td>76.3</td><td>8.06</td><td>1.5</td></tr>
+          <tr><td>PointNeXt</td><td>3.80</td><td>40.0</td><td>77.6</td><td>7.78</td><td>1.7</td></tr>
+          <tr><td>PointMAE</td><td>5.22</td><td>18.2</td><td>51.8</td><td>9.66</td><td>3.9</td></tr>
+          <tr><td>PTv3</td><td>3.79</td><td>42.8</td><td>76.8</td><td>7.90</td><td>1.9</td></tr>
+          <tr><td>Sonata/PTv3 (Stage 1)</td><td>3.61</td><td>46.9</td><td>79.9</td><td>7.84</td><td>1.7</td></tr>
+          <tr><td>PTv3 + PointNeXt ROI</td><td class="second-best">3.14</td><td class="second-best">57.7</td><td class="second-best">85.5</td><td class="second-best">6.72</td><td>1.4</td></tr>
+          <tr class="row-ours"><td>Full pipeline (ours)</td><td>2.91</td><td>62.7</td><td>88.0</td><td>6.50</td><td>0.7</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">Held-out test performance over all 24 landmarks on the 40-patient locked test set. All baselines use the same split, registered coordinates, and point samples.</p>
+
+    <div class="table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Observability group</th>
+            <th>n</th>
+            <th>MRE (mm)</th>
+            <th>SDR@3 (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>G0 Surface soft-tissue</td><td>3</td><td>2.56</td><td>78.3</td></tr>
+          <tr><td>G1 Frontal skeletal</td><td>8</td><td>2.63</td><td>68.1</td></tr>
+          <tr><td>G2 Lateral skeletal</td><td>4</td><td>3.50</td><td>48.8</td></tr>
+          <tr><td>G3 Deep / invisible</td><td>9</td><td>3.03</td><td>58.9</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">Deep landmarks (G3) remain predictable at 3.03&nbsp;mm: although invisible, their positions are constrained by global craniofacial shape. Lateral landmarks (G2) with variable soft-tissue thickness are the hardest group.</p>
+
+    <div class="figure-block">
+      <h3 class="title is-4">Qualitative Examples</h3>
+      <img class="rounded-figure" src="./static/images/qualitative_examples.png"
+           alt="Best, median, and worst test cases showing reference and predicted landmarks projected onto frontal and sagittal views."
+           width="2600" height="1780" loading="lazy" decoding="async">
+      <p class="figure-caption">
+        Best (1.84&nbsp;mm), median (2.92&nbsp;mm), and worst (4.38&nbsp;mm) held-out cases. Reference (circles) and predicted (crosses) landmarks are projected onto frontal and sagittal views; hidden skeletal landmarks are projected onto the same views.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">What the Analyses Show</h2>
+      </div>
+    </div>
+
+    <div class="analysis-grid">
+      <div class="analysis-card">
+        <div class="analysis-name">The signal is patient-specific, not a template</div>
+        <p>Shuffling predictions across patients raises MRE from 2.91 to 11.87&nbsp;mm &mdash; worse than the training-mean baseline &mdash; and a best-fit similarity alignment still leaves 5.36&nbsp;mm. Matched external geometry carries patient-specific information beyond a fixed population configuration or global similarity, for every observability group including deep landmarks.</p>
+      </div>
+      <div class="analysis-card">
+        <div class="analysis-name">The signal is not confined to the front of the face</div>
+        <p>Frozen anterior-coverage masks degrade performance monotonically: a mild frontal crop costs +0.30&nbsp;mm, while a tight face-only crop reaches 4.77&nbsp;mm MRE. Posterior, lateral, and inferior geometry contributes to hidden-landmark inference &mdash; a key consideration for future optical capture protocols.</p>
+      </div>
+      <div class="analysis-card">
+        <div class="analysis-name">Cephalometric measurements are encouraging but not clinical</div>
+        <p>ANB reaches 1.22&deg; mean absolute error, and sagittal skeletal class agreement is 34/40 (85%, &kappa;&nbsp;=&nbsp;0.76). SNA/SNB are less accurate because both depend on deep Sella. This small cohort motivates screening-oriented research but does not establish clinical safety.</p>
+      </div>
+      <div class="analysis-card">
+        <div class="analysis-name">Optical transfer remains an open problem</div>
+        <p>On the eight linked test patients, direct frozen full-pipeline transfer from real Vectra scans yields 10.96&nbsp;mm patient-level MRE, versus 2.79&nbsp;mm for clean CT-derived inputs. Separately, across all 14 Vectra scans, coverage-standardized CT-only retraining improves scan-level Stage-1 transfer from 12.40 to 7.94&nbsp;mm. Diagnostics reveal a large global-configuration component &mdash; but deployable local correspondence in the optical domain is unresolved.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Scope, Limitations &amp; Data</h2>
+        <div class="limitations-box content has-text-justified">
+          <p>
+            This study answers a <b>controlled feasibility question</b>, not a clinical deployment question. It provides a coordinate-consistent reference protocol for staged translation toward radiation-free cephalometry &mdash; it is not evidence for immediate screening, triage, or follow-up use, and CT remains necessary whenever internal anatomy must be directly visualized.
+          </p>
+          <ul>
+            <li>Inputs are CT-derived surfaces; inference from independently acquired optical scans is a separate, unresolved transfer problem.</li>
+            <li>Errors are measured against finalized consensus annotations, not an observer-independent anatomical truth; protocol-matched observer reliability is future work.</li>
+            <li>The cohort comprises 240 patients with dentofacial deformity referred for initial orthognathic planning at two hospitals belonging to one institution. The pooled 40-case test split is neither site-held-out nor external validation; broader prospective cohorts are needed before generalization can be established.</li>
+            <li>Per-case hospital, scanner, age, sex, and BMI labels were unavailable after anonymization, precluding center-held-out and demographic subgroup analyses.</li>
+            <li>The study was approved by the Tokyo Dental College Ethics Committee (approval no. 1091), written informed consent was obtained, and no CT was acquired solely for this study.</li>
+            <li><a href="https://github.com/tomoki-pc/surface-to-skeleton-3d-cephalometry">Model definitions and evaluation code</a> are publicly available. The retrospective clinical CT data are not publicly released for patient-privacy reasons; the &ldquo;locked protocol&rdquo; denotes a fixed split and analysis plan, not a data release.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgements</h2>
+    <p>This work was partially supported by JSPS KAKENHI Grant Numbers 23K28112 and 24K13203.</p>
+  </div>
+</section>
+
+<section class="section is-light" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <!-- TODO(camera-ready): update with the official proceedings entry (pages, publisher) once available. -->
+    <pre><code>@InProceedings{abe2026surface2skeleton,
+  author    = {Abe, Tomoki and Kanaya, Taiki and Saita, Kazuki and Noda, Mao and Tachiki, Chie and Nishii, Yasushi and Saito, Hideo},
+  title     = {Surface-to-Skeleton 3D Cephalometry: Estimating Hidden Skeletal Landmarks from CT-Derived External Soft-Tissue Surfaces},
+  booktitle = {Proceedings of the European Conference on Computer Vision (ECCV) Workshops},
+  month     = {September},
+  year      = {2026}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website template adapted from <a href="https://github.com/ripl/nerfies-template">ripl/nerfies-template</a>, which is based on the <a href="https://nerfies.github.io/">Nerfies</a> project page.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
